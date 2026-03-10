@@ -11,7 +11,6 @@ import { AboutComponent } from './about/about';
 export class App {
   // title = 'my-app';
   // fullName = 'Nguyễn Văn Công';
-  // age = 25;
 
   sayHello(){
     console.log('hello');
@@ -20,7 +19,5 @@ export class App {
 
   fullName = 'Angular';
   object = 'Framework';
-
-
 
 }
