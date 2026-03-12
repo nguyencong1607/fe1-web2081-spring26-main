@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './about.html',
   styleUrls: ['./about.css']
 })
-export class AboutComponent {
+export class About {
 
   name = 'Nguyễn Văn Công';
   age = 25;
