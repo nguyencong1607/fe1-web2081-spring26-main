@@ -1,6 +1,9 @@
-<p>stories works!</p>
+<strong>
+    <p>Stories works!</p>
 
 <h2>Danh sách truyện tranh</h2>
+</strong>
+<br>
 
 <div>
 
@@ -19,6 +22,7 @@
         <th>Thể loại</th>
         <th>Tác giả</th>
         <th>Lượt xem</th>
+        <th>Hành động</th>
     </tr>
 
 @for (story of stories; track story.title; let i = $index) {
@@ -43,6 +47,9 @@
 @if (story.views > 90000) {
 <span class="text-red-500">Hót</span>
 }</td>
+<td>
+    <button (click)="handleClick(story)">Chọn</button>
+</td>
 
 </tr>
 

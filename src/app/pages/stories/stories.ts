@@ -57,4 +57,7 @@ export class Stories {
     image: 'https://animotaku.fr/wp-content/uploads/2022/12/anime-Bleach-Thousand-Year-Blood-War-Partie-2-The-Separation-visuel-2.jpeg'
   }
 ];
+handleClick(story: any) {
+  alert(`bạn chọn ${story.title} của ${story.author}`);
+}
 }
