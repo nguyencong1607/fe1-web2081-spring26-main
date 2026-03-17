@@ -10,10 +10,15 @@
   </div>
 
   <div>
-    <label>Category</label>
-    <input type="text" formControlName="category" />
+    <label>Danh mục</label>
+    <select name="category" id="" formControlName="category">
+      <option value="">Chọn danh mục</option>
+      <option value="Điện thoại">Điện thoại</option>
+      <option value="Laptop">Laptop</option>
+      <option value="Tablet">Tablet</option>
+      <option value="Phụ kiện">Phụ kiện</option>
+    </select>
   </div>
-
   <div>
     <label>Giá</label>
     <input type="number" formControlName="price" />

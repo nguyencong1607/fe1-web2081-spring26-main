@@ -7,16 +7,40 @@
   <div>
     <label>UserName</label>
     <input type="text" formControlName="username" />
+
+    @if(username?.touched && username?.errors?.['required']){
+      <small>Username không được để trống</small>
+    }
+
+    @if(username?.errors?.['minlength']){
+      <small>Username phải ít nhất 3 ký tự</small>
+    }
   </div>
 
   <div>
     <label>Gmail</label>
     <input type="text" formControlName="gmail" />
+
+    @if(gmail?.touched && gmail?.errors?.['required']){
+      <small>Email không được để trống</small>
+    }
+
+    @if(gmail?.errors?.['email']){
+      <small>Email không đúng định dạng</small>
+    }
   </div>
 
   <div>
-    <label>PassWord</label>
-    <input type="number" formControlName="password" />
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+
+    @if(password?.touched && password?.errors?.['required']){
+      <small>Password không được để trống</small>
+    }
+
+    @if(password?.errors?.['minlength']){
+      <small>Password phải ít nhất 6 ký tự</small>
+    }
   </div>
 
   <button type="submit">Đăng Ký</button>

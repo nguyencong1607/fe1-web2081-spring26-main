@@ -16,6 +16,17 @@ export class Register {
       password:['' ,[Validators.required, Validators.minLength(6)]],
     })
   }
+   get username(){
+    return this.register.get('username');
+  }
+
+  get gmail(){
+    return this.register.get('gmail');
+  }
+
+  get password(){
+    return this.register.get('password');
+  }
   submitForm(){
     console.log(this.register.value);
   }
