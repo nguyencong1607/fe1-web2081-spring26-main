@@ -1,0 +1,26 @@
+<div class="container">
+
+<h2>Thêm product</h2>
+
+<form [formGroup]="addProForm" (ngSubmit)="submitForm()">
+
+  <div>
+    <label>Tên sản phẩm</label>
+    <input type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label>Category</label>
+    <input type="text" formControlName="category" />
+  </div>
+
+  <div>
+    <label>Giá</label>
+    <input type="number" formControlName="price" />
+  </div>
+
+  <button type="submit">Thêm Product</button>
+
+</form>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+
+<h2>Đăng ký</h2>
+
+<form [formGroup]="register" (ngSubmit)="submitForm()">
+
+  <div>
+    <label>UserName</label>
+    <input type="text" formControlName="username" />
+  </div>
+
+  <div>
+    <label>Gmail</label>
+    <input type="text" formControlName="gmail" />
+  </div>
+
+  <div>
+    <label>PassWord</label>
+    <input type="number" formControlName="password" />
+  </div>
+
+  <button type="submit">Đăng Ký</button>
+
+</form>
+
+</div>
