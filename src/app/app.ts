@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { About } from './pages/about/about';
-import { Contact } from './pages/contact/contact';
+// import { About } from './pages/about/about';
+// import { Contact } from './pages/contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, About, Contact, RouterLink],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
