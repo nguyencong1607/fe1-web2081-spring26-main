@@ -1,15 +1,28 @@
 <p>Danh sách sản phẩm</p>
 
-<ul>
-  <li class="hover:text-red-300">
-    <a routerLink="/product/laptop">Laptop</a>
-  </li>
-
-  <li class="hover:text-red-300">
-    <a routerLink="/product/iphone">Iphone</a>
-  </li>
-
-  <li class="hover:text-red-300">
-    <a routerLink="/product/tivi">Tivi</a>
-  </li>
-</ul>
+@if(loading){
+    <p>Đang tải dữ liệu</p>
+}@if(error){
+    <p style="color: red;">{{error}}</p>
+}@if(!loading && products.length === 0){
+    <p>Không có sản phẩm</p>
+}@if(products.length > 0){
+    <table border="1" [cellPadding]="10" [cellSpacing]="0">
+        <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Hành động</th>
+        </tr>
+        @for(pro of products; track pro.id){
+            <tr>
+                <td>{{pro.id}}</td>
+                <td>{{pro.name}}</td>
+                <td>{{pro.price}}</td>
+                <td>
+                    <button (click)="deletePro(pro.id)">Xóa</button>
+                </td>
+            </tr>
+        }
+    </table>
+}

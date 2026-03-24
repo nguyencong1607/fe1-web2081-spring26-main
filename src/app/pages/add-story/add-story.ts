@@ -11,34 +11,40 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class AddStory {
   addForm: FormGroup;
 
-    loading = false;
-    error = '';
-    success = '';
-   constructor(
+  loading = false;
+  error = '';
+
+  constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-  ){
+  ) {
     this.addForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(5)]],
+      title: ['', [Validators.required, Validators.minLength(3)]],
       author: ['', [Validators.required, Validators.minLength(3)]],
-      views: [0],
-    })
-   }
-   submitForm(){
-    console.log('Form',this.addForm.value);
+      view: ['', Validators.min(0)],
+    });
+  }
+  submitForm() {
+    console.log('Form', this.addForm.value);
+
+    this.loading = true;
+    this.error = '';
+
     const data = this.addForm.value;
-    this.http.post(' http://localhost:3000/story',data).subscribe({
-      next: () =>{
+
+    this.http.post('http://localhost:3000/stories', data).subscribe({
+      next: () => {
         this.loading = false;
-        // this.success = 'Thêm thành công';
+        alert('Them thanh cong');
         this.addForm.reset();
-        alert('thêm mới thành công');
       },
-      error: ()=>{
-        alert('thêm mới thất bại')
+      error: () => {
         this.loading = false;
-        // this.error = 'Có lỗi sảy ra'
-      }
-    })
-   }
+        alert('Them that bai');
+      },
+    });
+  }
+  get title() {
+    return this.addForm.get('title');
+  }
 }

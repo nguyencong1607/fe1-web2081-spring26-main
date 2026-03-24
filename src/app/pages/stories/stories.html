@@ -1,62 +1,51 @@
-<strong>
-    <p>Stories works!</p>
-
-<h2>Danh sách truyện tranh</h2>
-</strong>
-<br>
-
-<div>
-
-@if (stories.length === 0) {
-
-<p>Không có truyện nào</p>
-
-} @else {
-
-<table border="1" cellpadding="10">
-
+<h2>Danh sách truyện</h2>
+@if (loading) {
+  <p>Đang tải dữ liệu...</p>
+}
+@if (error) {
+  <p style="color: red">{{ error }}</p>
+}
+@if (!loading && stories.length === 0) {
+  <p>Không có truyện nào</p>
+}
+@if (stories.length > 0) {
+  <table border="1" [cellPadding]="10" [cellSpacing]="0">
     <tr>
-        <th>STT</th>
-        <th>Hình ảnh</th>
-        <th>Tên truyện</th>
-        <th>Thể loại</th>
-        <th>Tác giả</th>
-        <th>Lượt xem</th>
-        <th>Hành động</th>
+      <th>ID</th>
+      <th>Tên Truyện</th>
+      <th>Tác Giả</th>
+      <th>Lượt xem</th>
+      <th>Hành động</th>
     </tr>
-
-@for (story of stories; track story.title; let i = $index) {
-
-<tr>
-
-<td>{{ i + 1 }}</td>
-
-<td>
-<img [src]="story.image" width="80" height="100">
-</td>
-
-<td>
-{{ story.title }}
-</td>
-<td>{{story.category}}</td>
-
-<td>{{ story.author }}</td>
-
-<td>
-{{story.views}}
-@if (story.views >= 90000) {
-<span class="text-red-500">Hót</span>
-}</td>
-<td>
-    <button (click)="handleClick(story)">Chọn</button>
-</td>
-
-</tr>
-
+    @for (story of stories; track story.id) {
+      <tr>
+        <td>{{ story.id }}</td>
+        <td>{{ story.title }}</td>
+        <td>{{ story.author }}</td>
+        <td>{{ story.view }}</td>
+        <td>
+          <button (click)="deleteStory(story.id)">Xóa</button>
+        </td>
+      </tr>
+    }
+    <br>
+    <hr>
+    <h1 style="text-align: center; color: red; ">HOT</h1>
+    @for (story of stories; track story.id) {
+      
+      @if (story.view > 90000) {
+        
+        <tr>
+          
+          <td>{{ story.id }}</td>
+          <td>{{ story.title }}</td>
+          <td>{{ story.author }}</td>
+          <td>{{ story.view }}</td>
+          <td>
+            <button (click)="deleteStory(story.id)">Xóa</button>
+          </td>
+        </tr>
+      }
+    }
+  </table>
 }
-
-</table>
-
-}
-
-</div>

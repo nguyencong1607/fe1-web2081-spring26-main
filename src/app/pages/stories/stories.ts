@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stories',
@@ -6,58 +7,46 @@ import { Component } from '@angular/core';
   templateUrl: './stories.html',
   styleUrl: './stories.css',
 })
-export class Stories {
-  stories = [
-  {
-    title: 'One Piece',
-    author: 'Eiichiro Oda',
-    views: 100000,
-    since: 1999,
-    category: 'Adventure',
-    image: 'https://cdn.myanimelist.net/images/manga/2/253146.jpg'
-  },
-  {
-    title: 'Naruto',
-    author: 'Masashi Kishimoto',
-    views: 90000,
-    since: 1999,
-    category: 'Action',
-    image: 'https://cdn.myanimelist.net/images/manga/3/249658.jpg'
-  },
-  {
-    title: 'Doraemon',
-    author: 'Fujiko F Fujio',
-    views: 70000,
-    since: 1969,
-    category: 'Comedy',
-    image: 'https://cdn.myanimelist.net/images/manga/1/259070.jpg'
-  },
-  {
-    title: 'Dragon Ball',
-    author: 'Akira Toriyama',
-    views: 100000,
-    since: 1984,
-    category: 'Action',
-    image: 'https://static.flixzone.co/7a/i/f/48/67664bc20b8ae.jpg'
-  },
-  {
-    title: 'Attack On Titan',
-    author: 'Hajime Isayama',
-    views: 90000,
-    since: 2009,
-    category: 'Dark Fantasy',
-    image: 'https://cdn.myanimelist.net/images/manga/2/37846.jpg'
-  },
-  {
-    title: 'Bleach',
-    author: 'Tite Kubo',
-    views: 70000,
-    since: 2001,
-    category: 'Supernatural',
-    image: 'https://animotaku.fr/wp-content/uploads/2022/12/anime-Bleach-Thousand-Year-Blood-War-Partie-2-The-Separation-visuel-2.jpeg'
+export class Stories implements OnInit {
+  stories: any[] = [];
+
+  loading = false;
+  error = '';
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getStories();
   }
-];
-handleClick(story: any) {
-  alert(`bạn chọn ${story.title} của ${story.author}`);
-}
+
+  getStories() {
+    this.loading = true;
+    this.error = '';
+
+    this.http.get<any[]>(`http://localhost:3000/stories`).subscribe({
+      next: (data) => {
+        this.loading = false;
+        this.stories = data;
+      },
+      error: () => {
+        this.loading = false;
+        this.error = 'Không thể tải dữu liệu';
+      },
+    });
+  }
+
+  deleteStory(id: number) {
+    const confirmDelete = confirm('Bạn có chắc chắn xóa không?');
+    if (!confirmDelete) return;
+
+    this.http.delete(`http://localhost:3000/stories/${id}`).subscribe({
+      next: () => {
+        this.stories = this.stories.filter((story) => story.id !== id);
+        alert('Xóa thành công');
+      },
+      error: () => {
+        alert('Xóa thất bại');
+      },
+    });
+  }
 }

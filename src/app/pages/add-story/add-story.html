@@ -1,26 +1,25 @@
 <div class="container">
+  <h2 class="title">Thêm truyện tranh</h2>
 
-<h2>Thêm truyện tranh</h2>
+  <form [formGroup]="addForm" (ngSubmit)="submitForm()" class="form">
+    <div class="form-group">
+      <label for="title" class="label">Tên truyện</label>
+      <input type="text" id="title" formControlName="title" class="input" placeholder="Nhập tên truyện" />
+      @if(title?.invalid && title?.touched){
+        <p style="color: red;">Tiêu đề ko được để trống</p>
+      }
+    </div>
 
-<form [formGroup]="addForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="author" class="label">Tác giả</label>
+      <input type="text" id="author" formControlName="author" class="input" placeholder="Nhập tên tác giả" />
+    </div>
 
-  <div>
-    <label>Tên truyện</label>
-    <input type="text" formControlName="title" />
-  </div>
+    <div class="form-group">
+      <label for="view" class="label">Lượt xem</label>
+      <input type="number" id="view" formControlName="view" class="input" placeholder="Nhập số lượt xem" />
+    </div>
 
-  <div>
-    <label>Tác giả</label>
-    <input type="text" formControlName="author" />
-  </div>
-
-  <div>
-    <label>Lượt xem</label>
-    <input type="number" formControlName="views" />
-  </div>
-
-  <button type="submit">Thêm truyện</button>
-
-</form>
-
+    <button type="submit" class="btn">Thêm truyện</button>
+  </form>
 </div>
