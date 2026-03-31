@@ -1,47 +1,95 @@
 {
-  "story": [
-    {
-      "id": 1,
-      "title": "The Great Adventure",
-      "author": "John Doe",
-      "content": "Once upon a time, in a land far away..."
-    },
+  "stories": [
     {
       "id": 2,
-      "title": "Mystery of the Lost City",
-      "author": "Jane Smith",
-      "content": "In the heart of the jungle, there was a city that no one had ever seen..."
+      "title": "Bí Ẩn Thành Phố Ngầm",
+      "author": "Lê Thị B",
+      "view": 90011
+    },
+    {
+      "id": 3,
+      "title": "Ảo Mộng Hoàng Hôn",
+      "author": "Trần Minh C",
+      "view": 1470
+    },
+    {
+      "id": 4,
+      "title": "Công Thức Của Định Mệnh",
+      "author": "Phạm Quốc D",
+      "view": 1125
+    },
+    {
+      "id": 5,
+      "title": "Ngọn Lửa Băng Giá",
+      "author": "Hoàng Văn E",
+      "view": 1345
+    },
+    {
+      "id": 6,
+      "title": "Giấc Mơ Của Tinh Tú",
+      "author": "Nguyễn Thị F",
+      "view": 780
+    },
+    {
+      "id": 7,
+      "title": "Đấu Trường Ký Ức",
+      "author": "Mai Văn G",
+      "view": 1830
+    },
+    {
+      "id": 8,
+      "title": "Bậc Thầy Bóng Đêm",
+      "author": "Trương Thị H",
+      "view": 1610
+    },
+    {
+      "id": 9,
+      "title": "Ký Ức Rạn Nứt",
+      "author": "Vũ An I",
+      "view": 910
+    },
+    {
+      "id": 10,
+      "title": "Hoa Anh Đào Trong Mưa",
+      "author": "Phan Thu J",
+      "view": 1260
+    },
+    {
+      "id": 11,
+      "title": "Bảo Vật Hư Không",
+      "author": "Đỗ Văn K",
+      "view": 1540
+    },
+    {
+      "id": 12,
+      "title": "Ma Thuật Sa Mạc",
+      "author": "Lý Minh L",
+      "view": 1330
+    },
+    {
+      "id": 13,
+      "title": "Chiếc Đèn Ảo Diệu",
+      "author": "Ngô Thị M",
+      "view": 108590
+    },
+    {
+      "id": 14,
+      "title": "Cuộc Chiến Cõi Khác",
+      "author": "Trịnh Quang N",
+      "view": 1780
+    },
+    {
+      "id": 15,
+      "title": "Vườn Địa Đàng Tối Thượng",
+      "author": "Bùi Kim O",
+      "view": 121590
+    },
+    {
+      "title": "Sát thủ lưỡi kéo",
+      "author": "Không biết",
+      "view": 1002300,
+      "id": 16
     }
   ],
-  "users": [
-    {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@example.com"
-    }
-  ],
-  "products": [
-    {
-      "id": 1,
-      "name": "Widget",
-      "price": 19.99
-    },
-    {
-      "id": 2,
-      "name": "Gadget",
-      "price": 29.99
-    },
-    {
-      "name": "Iphone 16",
-      "price": 100000,
-      "category": "Điện thoại",
-      "id": 3
-    },
-    {
-      "name": "Ip 18",
-      "price": 10000,
-      "category": "Điện thoại",
-      "id": 4
-    }
-  ]
+  "users": []
 }

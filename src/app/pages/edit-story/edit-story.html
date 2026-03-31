@@ -1,0 +1,37 @@
+<h2>Sửa truyện</h2>
+
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <label>Tiêu đề</label>
+  <input formControlName="title" />
+
+  @if (editForm.get('title')?.touched && editForm.get('title')?.invalid) {
+    <p class="error-text">
+      @if (editForm.get('title')?.errors?.['required']) {
+        Không được để trống
+      }
+      @if (editForm.get('title')?.errors?.['minlength']) {
+        Tối thiểu 3 ký tự
+      }
+    </p>
+  }
+
+  <label>Tác giả</label>
+  <input formControlName="author" />
+
+  <label>Lượt xem</label>
+  <input type="number" formControlName="view" />
+
+  <button type="submit" [disabled]="loading">
+    {{ loading ? 'Đang cập nhật...' : 'Cập nhật' }}
+  </button>
+
+</form>
+
+@if (success) {
+  <p class="success">{{ success }}</p>
+}
+
+@if (error) {
+  <p class="error">{{ error }}</p>
+}
