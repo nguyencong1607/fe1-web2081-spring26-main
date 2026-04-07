@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,26 +10,35 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './register.css',
 })
 export class Register {
-  register: FormGroup;
-  constructor(private fb: FormBuilder){
-    this.register= this.fb.group({
-      username:['' ,[Validators.required]],
-      email:['' ,[Validators.required]],
-      password:['' ,[Validators.required, Validators.minLength(6)]],
+  registerForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+  ) {
+    this.registerForm = this.fb.group({
+      username: '',
+      email: '',
+      password: ''
     })
   }
-   get username(){
-    return this.register.get('username');
-  }
 
-  get gmail(){
-    return this.register.get('gmail');
-  }
-
-  get password(){
-    return this.register.get('password');
-  }
   submitForm(){
-    console.log(this.register.value);
+    if(this.registerForm.invalid){
+      this.registerForm.markAllAsTouched()
+      return
+    }
+
+    const data = this.registerForm.value
+    this.http.post(`http://localhost:3000/register`, data).subscribe({
+      next: () => {
+        alert("Đăng ký thành công")
+        this.router.navigateByUrl("/login")
+      },
+      error: () => {
+        alert("Đăng ký thất bại")
+      }
+    })
   }
 }
